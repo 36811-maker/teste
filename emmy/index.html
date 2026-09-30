@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinkCode | Aprenda programação</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="topbar">
+        <a class="brand" href="#" onclick="showHome(); return false;">
+            <span class="brand-mark">&lt;/&gt;</span>
+            Pink<span>Code</span>
+        </a>
+
+        <nav>
+            <button class="nav-link active" id="navHome"
+                onclick="showHome()">Início</button>
+
+            <button class="nav-link" id="navProgress"
+                onclick="showProgress()">Meu progresso</button>
+        </nav>
+
+        <button class="theme-btn" id="themeBtn"
+            aria-label="Alternar tema" onclick="toggleTheme()">☾</button>
+    </header>
+
+    <main>
+
+        <!-- PÁGINA INICIAL -->
+        <section id="homeView">
+
+            <div class="hero">
+                <div class="hero-copy">
+                    <span class="eyebrow">SEU ESPAÇO DE APRENDIZAGEM</span>
+
+                    <h1>
+                        Seu próximo passo<br>
+                        começa com <em>código.</em>
+                    </h1>
+
+                    <p>
+                        Aprenda HTML, CSS e JavaScript no seu ritmo,
+                        pratique com desafios e acompanhe sua evolução.
+                    </p>
+
+                    <button class="primary-btn" onclick="openModule('HTML')">
+                        Começar a aprender <span>→</span>
+                    </button>
+                </div>
+
+                <div class="hero-art">
+                    <div class="art-orbit orbit1"></div>
+                    <div class="art-orbit orbit2"></div>
+
+                    <div class="code-card">
+                        <div class="dots">
+                            <i></i><i></i><i></i>
+                        </div>
+
+                        <div class="fake-code">
+                            <b>&lt;html&gt;</b><br>
+                            &nbsp;&nbsp;<strong>&lt;h1&gt;</strong>
+                            <span>Olá, mundo!</span>
+                            <strong>&lt;/h1&gt;</strong><br>
+                            &nbsp;&nbsp;<b>&lt;style&gt;</b><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <small>color: #d982a7;</small><br>
+                            &nbsp;&nbsp;<b>&lt;/style&gt;</b><br>
+                            <b>&lt;/html&gt;</b>
+                        </div>
+
+                        <div class="sparkle">✦</div>
+                    </div>
+
+                    <div class="floating-heart">♡</div>
+                </div>
+            </div>
+
+            <!-- MÓDULOS -->
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">TRILHAS DE APRENDIZADO</span>
+                    <h2>Escolha por onde começar</h2>
+                    <p>Avance nível por nível e construa sua base.</p>
+                </div>
+
+                <div class="overall">
+                    <span>Progresso geral</span>
+                    <b id="overallText">0%</b>
+
+                    <div class="progress-track">
+                        <div id="overallBar" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-grid" id="moduleGrid"></div>
+
+            <!-- DICA -->
+            <div class="tip-banner">
+                <div class="tip-icon">✿</div>
+
+                <div>
+                    <b>Aprenda praticando</b>
+                    <p>
+                        Leia o conteúdo, tente resolver os exercícios
+                        e use as dicas quando precisar.
+                        Suas anotações ficam salvas neste navegador.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ÁREA DOS NÍVEIS -->
+        <section id="lessonView" class="hidden">
+
+            <button class="back-link" onclick="showHome()">
+                ← Voltar aos módulos
+            </button>
+
+            <div class="lesson-layout">
+
+                <!-- MENU LATERAL DOS NÍVEIS -->
+                <aside class="level-sidebar">
+                    <div class="side-title">
+                        SUA TRILHA
+                        <span id="sideModule">HTML</span>
+                    </div>
+
+                    <div id="levelList"></div>
+                </aside>
+
+                <!-- CONTEÚDO DO NÍVEL -->
+                <article class="lesson-main">
+
+                    <div class="lesson-top">
+                        <span class="eyebrow" id="lessonModule">HTML</span>
+                        <span class="level-pill" id="lessonNumber">
+                            NÍVEL 1
+                        </span>
+                    </div>
+
+                    <h1 id="lessonTitle"></h1>
+
+                    <p class="lesson-intro" id="lessonIntro"></p>
+
+                    <!-- EXPLICAÇÃO -->
+                    <div class="learn-card">
+                        <div class="card-heading">
+                            <span class="heading-icon">✎</span>
+                            <h3>Aprenda o conceito</h3>
+                        </div>
+
+                        <div id="lessonTheory"></div>
+
+                        <div class="example-box">
+                            <div class="example-label">EXEMPLO</div>
+                            <pre id="lessonExample"></pre>
+                        </div>
+                    </div>
+
+                    <!-- EXERCÍCIOS -->
+                    <div class="exercise-heading">
+                        <div>
+                            <span class="eyebrow">HORA DE PRATICAR</span>
+                            <h2>Fixe o conteúdo</h2>
+                            <p>
+                                Complete os dois exercícios
+                                para liberar o próximo nível.
+                            </p>
+                        </div>
+
+                        <span class="exercise-count" id="exerciseCount">
+                            0/2 concluídos
+                        </span>
+                    </div>
+
+                    <div id="exerciseArea"></div>
+
+                    <!-- ANOTAÇÕES -->
+                    <div class="notes-card">
+                        <div class="card-heading">
+                            <span class="heading-icon">♡</span>
+                            <h3>Minhas anotações</h3>
+
+                            <span class="saved-label" id="savedLabel">
+                                Salvo automaticamente
+                            </span>
+                        </div>
+
+                        <p>
+                            Registre dúvidas, exemplos ou pontos
+                            importantes deste nível.
+                        </p>
+
+                        <textarea
+                            id="notes"
+                            placeholder="Minhas anotações..."
+                            rows="5">
+                        </textarea>
+                    </div>
+
+                    <!-- NAVEGAÇÃO ENTRE NÍVEIS -->
+                    <div class="lesson-footer">
+                        <button
+                            class="secondary-btn"
+                            id="prevLevel"
+                            type="button"
+                            disabled
+                        >
+                            ← Nível anterior
+                        </button>
+
+                        <button
+                            class="primary-btn"
+                            id="nextLevel"
+                            type="button"
+                            disabled
+                        >
+                            Próximo nível →
+                        </button>
+                    </div>
+
+                </article>
+            </div>
+        </section>
+
+        <!-- MEU PROGRESSO -->
+        <section id="progressView" class="hidden">
+
+            <button class="back-link" onclick="showHome()">
+                ← Voltar ao início
+            </button>
+
+            <span class="eyebrow">SEU DESEMPENHO</span>
+
+            <h1 class="progress-title">
+                Olha só o quanto você já avançou!
+                <em>♡</em>
+            </h1>
+
+            <!-- ESTATÍSTICAS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <span>Níveis concluídos</span>
+                    <b id="statLevels">0/12</b>
+                    <small>Continue no seu ritmo</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Exercícios concluídos</span>
+                    <b id="statExercises">0/24</b>
+                    <small>Um passo de cada vez</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Progresso total</span>
+                    <b id="statPercent">0%</b>
+                    <small>Seu aprendizado</small>
+                </div>
+
+            </div>
+
+            <!-- PROGRESSO POR MÓDULO -->
+            <div class="learn-card">
+                <div class="card-heading">
+                    <span class="heading-icon">✿</span>
+                    <h3>Progresso por trilha</h3>
+                </div>
+
+                <div id="progressModules"></div>
+            </div>
+
+            <button class="reset-btn" onclick="resetProgress()">
+                Reiniciar progresso
+            </button>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        Feito para aprender com calma
+        <span>♡</span>
+        PinkCode
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="js/niveis.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
